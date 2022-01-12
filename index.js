@@ -119,29 +119,26 @@ Puppies less than 1 year
 NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
 */  
 
-function hungryDog(age, weight){
-  if (age >= 1){
-    if (weight <= 5){
-      console.log(weight * 0.05);
-    } else if (weight <= 10){
-      console.log(weight * 0.04);
-    } else if (weight <= 15){
-      console.log(weight * 0.03);
-    } else if (weight > 15){
-      console.log(weight * 0.02);
-    }
-  } else if (age < 1){
-    if (age <= 0.33){
-      console.log(weight * 0.1);
-    } else if (age <= 0.5833){
-      console.log(weight * 0.05);
-    } else if (age < 1){
-      console.log(weight * 0.04);
-    }
+function hungryDog(weight, age){
+  if(age >= 1 && weight <= 5){
+    return weight * 0.05;
+  } else if(age >= 1 && weight >= 6 && weight <= 10){
+    return weight * 0.04;
+  } else if(age >= 1 && weight >= 11 && weight <= 15){
+    return weight * 0.03;
+  } else if(age >= 1 && weight > 15){
+    return weight * 0.02;
+  } else if(age < 1 && age >= 0.583){
+    return weight * 0.04;
+  } else if(age < 0.583 && age >= 0.333){
+    return weight * 0.05;
+  } else if(age < 0.333){
+    return weight * 0.1;
+  } else {
+    return 'error';
   }
 }
-//console.log(hungryDog(1,15));
-
+console.log(hungryDog(15,1));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -166,6 +163,7 @@ RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors
 HINT: Remember that the order in which we pass in our arguments matters when it comes to parameters
 */
 
+/*
 let computer = Math.floor(Math.random() * 3);
 function game(user, computer){
 
@@ -196,8 +194,32 @@ function game(user, computer){
   }
 }
 //console.log(game('rock', computer));
+*/
 
+let computer = Math.random();
 
+if(computer <= 0.34){
+  computer = 'rock'
+} else if(computer <= 0.67){
+  computer = 'paper'
+} else if (computer > 0.67){
+  computer = 'scissors'
+}
+
+function game(user,computer){
+  if(user === computer){
+    return `it's a tie`;
+  } else if (user === 'rock' && computer ===  'scissors'){
+    return `you win!`;
+  } else if (user === 'paper' && computer === 'rock'){
+    return `you win!`;
+  } else if (user === 'scissors' && computer === 'paper'){
+    return `you win!`;
+  } else {
+    return `you lose!`;
+  }
+}
+console.log(game('paper',computer))
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -240,12 +262,12 @@ Using the annoyingSong function below do the following:
     "{number} bottles of soda on the wall, {number} bottles of soda, take one down pass it around {number left over} bottles of soda on the wall"
 */
 
-function annoyingSong(countDown){
-  for(let i = 0; i < countDown; i++){
-    console.log(countDown, ' bottles of soda on the wall, ', countDown, ' bottles of soda, take one down pass it around ', (countDown - i), ' bottles of soda on the wall');
+function annoyingSong(number){
+  for(let i = number; i > 0; i--){
+    return `${i} bottles of soda on the wall, ${i} bottles of soda, take one down pass it around ${i - 1} bottles of soda on the wall`;
   }
 }
-annoyingSong(3);
+console.log(annoyingSong(3));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -262,17 +284,17 @@ Using the grade function below do the following:
  below should return 'you got an F'
 */
 
-function grade(grade){
-  if(grade >= 90 && grade <= 100){
-    console.log('you got an A')
-  } else if (grade >= 80 && grade <= 89){
-    console.log('you got a B')
-  } else if (grade >= 70 && grade <= 79){
-    console.log('you got a C')
-  } else if (grade >= 60 && grade <= 69){
-    console.log('you got a D')
-  } else if (grade < 59){
-    console.log('you got an F')
+function grade(findGrade){
+  if(findGrade >= 90){
+    return `you got an A`;
+  } else if (findGrade < 90 && findGrade >= 80){
+    return `you got a B`;
+  } else if (findGrade < 80 && findGrade >= 70){
+    return `you got a C`;
+  } else if (findGrade < 70 && findGrade >= 60){
+    return `you got a D`;
+  } else if (findGrade < 60){
+    return `you got an F`;
   }
 }
 
